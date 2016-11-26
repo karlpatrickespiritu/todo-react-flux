@@ -43,17 +43,13 @@ class TodoStore extends EventEmitter {
 
   remove(todo) {
     console.log('remove todo:', todo)
-  }
-
-  update(todo) {
-    console.log('update todo:', todo)
+    this.emit('change')
   }
 
   handleActions(payload) {
     switch (payload.type) {
       case 'ADD_TODO': this.add(payload.todo); break;
       case 'REMOVE_TODO': this.remove(payload.todo.id); break;
-      case 'UPDATE_TODO': this.update(payload.todo); break;
       default: break
     }
   }

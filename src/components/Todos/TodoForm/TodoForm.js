@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { add } from '../../../actions/TodoActions'
+import TodoActions from '../../../actions/TodoActions'
 
 class TodoForm extends Component {
   constructor(props) {
@@ -11,7 +11,14 @@ class TodoForm extends Component {
 
   onSubmit(event) {
     event.preventDefault()
-    add(this.state.todo)
+    TodoActions.add(this.state.todo)
+    this.emptyForm()
+  }
+
+  emptyForm() {
+    this.setState({ 
+      todo: { name: '' }
+    })
   }
 
   onChangeTodoName(event) {
@@ -24,12 +31,12 @@ class TodoForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit.bind(this)}>
+      <form onSubmit={this.onSubmit.bind(this)} name="todo-form">
         <div className="form-group">
           <label>Todo</label>
-          <input type="text" value={this.state.todo.name} onChange={this.onChangeTodoName.bind(this)} className="form-control" placeholder="Add todo.."/>
+          <input type="text" required value={this.state.todo.name} onChange={this.onChangeTodoName.bind(this)} className="form-control" placeholder="Add todo.."/>
         </div>
-        <button type="submit" className="btn btn-default">Submit</button>
+        <button type="submit" className="btn btn-primary btn-block">Add</button>
       </form>
     )
   }

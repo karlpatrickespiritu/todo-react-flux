@@ -17,7 +17,7 @@ class Todos extends Component {
   render() {
     const todos = this.state.todos.map(todo => <Todo key={todo.id} todo={todo}/>)   
     return (
-      <ul>
+      <ul className="list-group">
         {todos}
       </ul>
     )
