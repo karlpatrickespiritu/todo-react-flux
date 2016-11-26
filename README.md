@@ -1,2 +1,2 @@
 # todo-react-flux
-simple todo app using react with flux pattern
+a very simple todo app using react with flux pattern

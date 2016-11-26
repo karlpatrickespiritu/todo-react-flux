@@ -1,24 +1,17 @@
 import React, { Component } from 'react'
 import Todo from './Todo/Todo'
+import TodoStore from '../../stores/TodoStore'
 
 class Todos extends Component {
   constructor() {
     super()
-    
-    const todos = [{
-      id: 1,
-      name: 'Learn React'
-    }, {
-      id: 2,
-      name: 'Learm Flux'
-    }, {
-      id: 3,
-      name: 'Learm Redux'
-    }]
+    TodoStore.all(todos => this.state = { todos })
+  }
 
-    this.state = {
-      todos: todos
-    }
+  componentWillMount() {
+    TodoStore.on('change', () => {
+      TodoStore.all(todos => this.setState({ todos }))
+    })
   }
 
   render() {
