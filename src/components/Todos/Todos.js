@@ -14,10 +14,17 @@ class Todos extends Component {
     })
   }
 
+  isEmptyTodos() {
+    return this.state.todos.length < 1
+  }
+
   render() {
     const todos = this.state.todos.map(todo => <Todo key={todo.id} todo={todo}/>)   
     return (
       <ul className="list-group">
+        {this.isEmptyTodos() ? 
+          <div className="alert alert-warning">No todos found</div>: ''
+        }
         {todos}
       </ul>
     )

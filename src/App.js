@@ -8,9 +8,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <TodoForm/>
-        <hr/>
-        <Todos/>
+        <div className="row">
+          <div className="col-md-6 col-md-offset-3">
+            <TodoForm/>
+            <hr/>
+            <Todos/>
+          </div>
+        </div>
       </div>
     );
   }

@@ -12,7 +12,7 @@ class TodoStore extends EventEmitter {
     this.todos = [{
       id: uuid(),
       name: 'Learn React',
-      completed: false,
+      completed: true,
       created_at: Date.now()
     }, {
       id: uuid(),
@@ -41,8 +41,8 @@ class TodoStore extends EventEmitter {
     this.emit('change')
   }
 
-  remove(todo) {
-    console.log('remove todo:', todo)
+  remove(id) {
+    this.todos = this.todos.filter((todo) => todo.id !== id)
     this.emit('change')
   }
 
@@ -50,6 +50,7 @@ class TodoStore extends EventEmitter {
     switch (payload.type) {
       case 'ADD_TODO': this.add(payload.todo); break;
       case 'REMOVE_TODO': this.remove(payload.todo.id); break;
+      case 'TODO_TOGGLE_COMPLETED': this.toggleCompleted(payload.todo); break;
       default: break
     }
   }
