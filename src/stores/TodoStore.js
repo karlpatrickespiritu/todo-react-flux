@@ -50,7 +50,6 @@ class TodoStore extends EventEmitter {
     switch (payload.type) {
       case 'ADD_TODO': this.add(payload.todo); break;
       case 'REMOVE_TODO': this.remove(payload.todo.id); break;
-      case 'TODO_TOGGLE_COMPLETED': this.toggleCompleted(payload.todo); break;
       default: break
     }
   }
