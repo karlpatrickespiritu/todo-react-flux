@@ -8,10 +8,10 @@ a very simple todo app using react with flux pattern
 ### Installation
 ````cli
 $ git clone https://github.com/karlpatrickespiritu/todo-react-flux.git
+$ cd todo-react-flux
 $ npm install
 ````
 ### Running locally
 ````cli
-$ cd todo-react-flux
 $ npm run start
 ````
